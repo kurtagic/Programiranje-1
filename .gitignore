@@ -1,0 +1,13 @@
+#ignore directories
+DN
+IZZIVI
+OTHER
+PREDAVANJA
+VAJE
+
+# ignore all subdirectories and its contents
+**/results
+
+# ignore file extensions
+*.class
+*.cmd
