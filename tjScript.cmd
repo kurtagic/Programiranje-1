@@ -11,9 +11,7 @@ for %%f in (%path%\*.java) do (
 	set "resultsFolder=%path%\tests\results"
 
 	if not exist !resultsFolder! (mkdir !resultsFolder!)
-	echo !scrFile!
-	echo !testsFolder!
-	echo !resultsFolder!
+
 	tj.exe !scrFile! !testsFolder! !resultsFolder!
 )
 
