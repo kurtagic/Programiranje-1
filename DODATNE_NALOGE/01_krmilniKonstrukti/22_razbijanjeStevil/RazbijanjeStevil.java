@@ -42,10 +42,11 @@ public class RazbijanjeStevil {
 	
 	private static long removeFirstNDigits(long number, long n) {
 		long divisor = 1;
-		long ogNumber = number;
+		long a = number;
+		
 		for(long i = 0; i < n; i++) {
-			number = ogNumber;
 			divisor = 1;
+			number = a;
 			while(number >= 10) {
 				number /= 10;
 				divisor *= 10;
@@ -53,9 +54,9 @@ public class RazbijanjeStevil {
 			
 			long firstDigit = number % divisor;
 		
-			ogNumber -= firstDigit*divisor;
+			a -= firstDigit*divisor;
 		}
-	
-		return ogNumber;
+
+		return a;
 	}
 }
