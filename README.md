@@ -6,11 +6,11 @@ Programiranje 1, Fakulteta za računalništvo in informatiko, Univerza v Ljublja
 batch file za testiranje java datotek s tj.exe. 
 
 ### DIRECTORY ORGANISATION DEMO
-1. MAIN_DIRECTORY
-- directory
+1. MAIN_DIRECTORY/
+- directory/
   - File.java
-  - tests
-      - tests
+  - tests/
+      - tests/
         - test01.in
         - test01.out
         - ...    
