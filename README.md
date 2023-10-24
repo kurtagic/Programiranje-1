@@ -2,7 +2,7 @@
 Programiranje 1, Fakulteta za računalništvo in informatiko, Univerza v Ljubljani
 
 
-## tj Script
+## TJ SCRIPT
 batch file za testiranje java datotek s tj.exe. 
 
 ### DIRECTORY ORGANISATION DEMO
