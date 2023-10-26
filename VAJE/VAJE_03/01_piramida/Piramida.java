@@ -8,20 +8,20 @@ public class Piramida {
 		int n = sc.nextInt();
 		
 		for(int i = 0; i < n; i++) {
-			String vrstica = "";
-			String presledki = "";
-			for(int j = 0; j < (n - 1 - i); j++) {
-				presledki += " ";
-			}
+			String presledki = stringGenerator((n - i - 1), " ");
+			String zvezdice = stringGenerator((2*i + 1), "*");
 			
-			String zvezdice = "";
-			for(int k = 0; k < (2*i + 1); k++) {
-				zvezdice += "*";
-			}
-			
-			vrstica = presledki + zvezdice;
-			
-			System.out.println(vrstica);
+			System.out.println(presledki + zvezdice);
 		}
+	}
+	
+	private static String stringGenerator(int n, String value) {
+		String str = "";
+		
+		for(int i = 0; i < n; i++) {
+			str += value;
+		}
+		
+		return str;
 	}
 }
