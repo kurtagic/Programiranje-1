@@ -1,7 +1,6 @@
 #ignore directories
-IZZIVI
-OTHER
-PREDAVANJA
+izzivi
+other
 
 # ignore all subdirectories and its contents
 **/results
