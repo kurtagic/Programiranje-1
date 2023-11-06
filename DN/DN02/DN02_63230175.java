@@ -58,10 +58,10 @@ public class DN02_63230175 {
 		int offset = (key == 0) ? 0 : key - (2*ring - 1)*(2*ring - 1);
 		
 		if(offset == 0) return new int[]{-ring, ring};     
-        else if(offset <= 2*ring) return new int[]{offset - ring, ring};
-        else if(offset <= 4*ring) return new int[]{ring, -offset + 3*ring};
-        else if(offset <= 6*ring) return new int[]{-offset + 5*ring, -ring};    
-		else if(offset <= 8*ring) return new int[]{-ring, offset - 7*ring};
+        if(offset <= 2*ring) return new int[]{offset - ring, ring};
+        if(offset <= 4*ring) return new int[]{ring, -offset + 3*ring};
+        if(offset <= 6*ring) return new int[]{-offset + 5*ring, -ring};    
+		if(offset <= 8*ring) return new int[]{-ring, offset - 7*ring};
 		
 		return new int[2];
 	}
