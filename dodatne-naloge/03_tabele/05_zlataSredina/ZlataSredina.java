@@ -12,38 +12,59 @@ public class ZlataSredina {
 		}
 		
 		// Arrays.sort(zaporedje);
-		quickSort(zaporedje, 0, zaporedje.length - 1);
+		quicksort(zaporedje);
 		
 		System.out.println(zaporedje[k]);
 	}
 	
-	private static void quickSort(int[] array, int low, int high) {
-		if (low < high) {
-			int pi = partition(array, low, high);
-			quickSort(array, low, pi - 1);
-			quickSort(array, pi + 1, high);
-		}
+	private static void quicksort(int[] array) {
+		quicksort(array, 0, array.length - 1);
 	}
-	
-	private static int partition(int[] array, int low, int high) {
-		int pivot = array[high];
-		int i = (low - 1);
 
-		for (int j = low; j < high; j++) {
-			if (array[j] < pivot) {
-				i++;
-				swap(array, i, j);
-			}
-		}
-		
-		swap(array, i + 1, high);
-		
-		return i + 1;
+	private static void quicksort(int[] array, int lowIndex, int highIndex) {
+
+		if (lowIndex >= highIndex) return;
+    
+
+		int pivotIndex = new Random().nextInt(highIndex - lowIndex) + lowIndex;
+		int pivot = array[pivotIndex];
+		swap(array, pivotIndex, highIndex);
+
+		int leftPointer = partition(array, lowIndex, highIndex, pivot);
+
+		quicksort(array, lowIndex, leftPointer - 1);
+		quicksort(array, leftPointer + 1, highIndex);
 	}
-	
-	private static void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-}  
+
+	private static int partition(int[] array, int lowIndex, int highIndex, int pivot) {
+		int leftPointer = lowIndex;
+		int rightPointer = highIndex - 1;
+
+		while (leftPointer < rightPointer) {
+
+			while (array[leftPointer] <= pivot && leftPointer < rightPointer) {
+				leftPointer++;
+			}
+
+			while (array[rightPointer] >= pivot && leftPointer < rightPointer) {
+				rightPointer--;
+			}
+
+			swap(array, leftPointer, rightPointer);
+		}
+    
+		if(array[leftPointer] > array[highIndex]) {
+			swap(array, leftPointer, highIndex);
+		} else {
+			leftPointer = highIndex;
+		}
+    
+		return leftPointer;
+	}
+
+	private static void swap(int[] array, int index1, int index2) {
+		int temp = array[index1];
+		array[index1] = array[index2];
+		array[index2] = temp;
+	}
+}

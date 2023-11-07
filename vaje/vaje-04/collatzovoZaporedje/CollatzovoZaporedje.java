@@ -17,24 +17,22 @@ public class CollatzovoZaporedje {
 		int[] longest = {0, 0};
 		
 		for(int i = start; i <= end; i++) {
-			int term = getSequence(i).size();
-			if(term > longest[1]) longest = new int[]{i, term};
+			int length = getSequenceLength(i);
+			if(length > longest[1]) longest = new int[]{i, length};
 		}
 		
 		return longest;
 	}
 	
-	private static List<Integer> getSequence(int n) {
-		List<Integer> sequence = new ArrayList<>();
+	private static int getSequenceLength(int n) {
+		int size = 1;
 		
-		while(n != 1) {
-			sequence.add(n);
+		for(int i = 0; n != 1; i++) {
 			n = function(n);
+			size++;
 		}
 		
-		sequence.add(1);
-		
-		return sequence;
+		return size;
 	}
 	
 	 private static int function(int n) {
