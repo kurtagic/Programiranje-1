@@ -25,14 +25,14 @@ public class CollatzovoZaporedje {
 	}
 	
 	private static int getSequenceLength(int n) {
-		int size = 1;
+		int length = 1;
 		
 		for(int i = 0; n != 1; i++) {
 			n = function(n);
-			size++;
+			length++;
 		}
 		
-		return size;
+		return length;
 	}
 	
 	 private static int function(int n) {

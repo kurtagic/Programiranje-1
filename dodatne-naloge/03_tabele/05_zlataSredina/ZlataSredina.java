@@ -4,15 +4,15 @@ public class ZlataSredina {
 	public static void main (String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int k = sc.nextInt();
-		int dolzina=2*k+1;
-		int[] tabela=new int[dolzina];
+		int dolzina = 2*k+1;
+		int[] zaporedje = new int[dolzina];
 		
-		for (int i=0;i<dolzina;i++) {
-			tabela[i]=sc.nextInt();
+		for (int i = 0; i < dolzina; i++) {
+			zaporedje[i] = sc.nextInt();
 		}
 		
-		Arrays.sort(tabela);
+		Arrays.sort(zaporedje);
 		
-		System.out.println(tabela[k]);
+		System.out.println(zaporedje[k]);
 	}
 }
