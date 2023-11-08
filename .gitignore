@@ -1,6 +1,6 @@
 #ignore directories
 izzivi
-other
+predavanja
 
 # ignore all subdirectories and its contents
 **/results
