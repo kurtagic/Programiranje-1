@@ -25,7 +25,7 @@ public class CollatzovoZaporedje {
 	}
 	
 	private static int getSequenceLength(int n) {
-		int length = 1;
+        int length = 1;
 		
 		while(n != 1) {
 			n = function(n);
