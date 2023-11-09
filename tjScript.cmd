@@ -12,7 +12,7 @@ for %%f in (%path%\*.java) do (
 
 	if not exist !resultsFolder! (mkdir !resultsFolder!)
 
-	tj.exe !scrFile! !testsFolder! !resultsFolder!
+	tj.exe !scrFile! !testsFolder! !resultsFolder! -t 2s
 )
 
 endlocal
