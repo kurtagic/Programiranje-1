@@ -38,7 +38,6 @@ public class DN02_63230175 {
 
 		return keyCoordinates;
 }
-	
 	private static int[] ravnovrstnica(int key) {
 		return new int[]{key, 0};
 	}

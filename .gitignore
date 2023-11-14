@@ -1,9 +1,10 @@
 #ignore directories
-izzivi
 predavanja
+.idea
 
 # ignore all subdirectories and its contents
 **/results
 
 # ignore file extensions
 *.class
+*.iml
