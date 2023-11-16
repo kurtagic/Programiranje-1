@@ -24,8 +24,8 @@ public class IzstevankaShiftArray {
     }
 	
 	private static void premakni(String[] array, int izbranIndex, int length) {
-		for(int i = 0; i < length; i++) {
-			if(i > izbranIndex) array[i-1] = array[i];
+		for(int i = izbranIndex; i < length - 1; i++) {
+			array[i] = array[i+1];
 		}
 	}
 }
