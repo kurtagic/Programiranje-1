@@ -1,6 +1,6 @@
 #ignore directories
 predavanja
-.idea
+.idea/
 
 # ignore all subdirectories and its contents
 **/results

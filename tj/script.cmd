@@ -2,18 +2,19 @@
 
 setlocal enabledelayedexpansion
 
-set /p "path=Enter the directory path: "
+set /p "path=directory: "
 
 for %%f in (%path%\*.java) do (
     
-	set "scrFile=%%f"
-	set "testsFolder=%path%\tests\tests"
-	set "resultsFolder=%path%\tests\results"
+	set "scr=%%f"
+	set "tests=%path%\tests\tests"
+	set "results=%path%\tests\results"
+	
+	if not exist !tests! (mkdir !tests!)
+	if not exist !results! (mkdir !results!)
 
-	if not exist !resultsFolder! (mkdir !resultsFolder!)
-
-	tj.exe !scrFile! !testsFolder! !resultsFolder! -t 2s
-
+	tj.exe !scr! !tests! !results! -t 2s
+	
 	pause
 )
 

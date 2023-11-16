@@ -26,7 +26,7 @@ public class DN03_63230175 {
 		res += getTiles(tilesInHeight*tileSize, restWidth, k - 1);
 		res += getTiles(restHeight, tilesInWidth*tileSize, k - 1);
 		res += getTiles(restHeight, restWidth, k - 1);
-
+		
 		return res;
 	}
 }
