@@ -14,14 +14,9 @@ public class IzstopajociElement {
             zaporedje.add(a);
         }
 
-        for(int i = 2; i < limit; i++) {
-            boolean isDevisable = false;
-            for (int element : zaporedje) {
-                if(element % i == 0) {
-                    isDevisable = true;
-                }
-
-            }
+        List<>[] denomiantors = new ArrayList<Integer>()[zaporedje.size()];
+        for(int i = 0; i < zaporedje.size(); i++) {
+            denominators[i] = getDenominators(zaporedje.get(i));
         }
     }
 }
