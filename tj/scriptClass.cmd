@@ -2,19 +2,14 @@
 
 setlocal enabledelayedexpansion
 
-set /p "path=Enter the directory path: "
+set /p "path=class directory: "
 
-for %%f in (%path%\*.java) do (
-    
-	set "scr=%%f"
-	set "tests=%path%\tests\tests"
-	set "results=%path%\tests\results"
+set "scr=%path%"
+set "tests=%path%\tests\tests"
+set "results=%path%\tests\results"
 
-	if not exist !results! (mkdir !results!)
+if not exist !results! (mkdir !results!)
 
-	tj.exe !scr! !tests! !results! -t 2s
-
-	pause
-)
+tj.exe !scr! !tests! !results! -t 2s
 
 endlocal

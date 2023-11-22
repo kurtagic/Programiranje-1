@@ -2,7 +2,7 @@
 
 setlocal enabledelayedexpansion
 
-set /p "path=Enter the directory path: "
+set /p "path=file directory: "
 
 for %%f in (%path%\*.java) do (
     
