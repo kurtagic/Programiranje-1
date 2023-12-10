@@ -18,11 +18,11 @@ public class Volitve {
     }
 
     public static int najVolisce(int[][][] t, int stranka) {
-
         int[] res = new int[2];
-        for(int volisce = 0; volisce < t[0][stranka].length; volisce++) {
 
+        for(int volisce = 0; volisce < t[0][stranka].length; volisce++) {
             int glasovi = 0;
+
             for(int leto = 0; leto < t.length; leto++) {
                 glasovi += t[leto][stranka][volisce];
             }
@@ -34,7 +34,6 @@ public class Volitve {
     }
 
     public static int vsotaUvrstitev(int[][][] t, int stranka, int volisce) {
-
         int uvrstitev = t.length;
 
         for(int leto = 0; leto < t.length; leto++) {
