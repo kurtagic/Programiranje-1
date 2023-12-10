@@ -5,7 +5,7 @@ public class Knjiznica {
     private int stNaslovov;
     private int stIzvodovNaNaslov;
 
-    private int[][] clani;
+    private int[][] clanisokreteni;
     private int[] naslovi;
     private int[] popularnost;
 
