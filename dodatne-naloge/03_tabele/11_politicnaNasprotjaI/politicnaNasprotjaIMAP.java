@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class politicnaNasprotjaIMAP {
+public class PoliticnaNasprotjaIMAP {
 	
 	public enum Politician {
 		LEFT, CENTER, RIGHT

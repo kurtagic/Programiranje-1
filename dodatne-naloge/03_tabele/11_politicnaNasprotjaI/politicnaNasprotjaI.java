@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class politicnaNasprotjaI {
+public class PoliticnaNasprotjaI {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -25,7 +25,7 @@ public class politicnaNasprotjaI {
 			politicians[i]++;
 		}
 
-        return arrangements;
+		return arrangements;
     }
 
     private static boolean isValid(int[] array) {
