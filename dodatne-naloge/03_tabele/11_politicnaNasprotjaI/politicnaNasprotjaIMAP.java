@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class politicnaNasprotjaIMAP {
+public class PoliticnaNasprotjaIMAP {
 	
 	public enum Politician {
 		LEFT, CENTER, RIGHT
@@ -20,14 +20,16 @@ public class politicnaNasprotjaIMAP {
 		System.out.println(getArrangements(seats, new Politician[l + c + d], 0));
     }
 
-    public static int getArrangements(Map<Politician, Integer> seats, Politician[] arrangement, int index) {
-	   
+    public static int getArrangements(Map<Politician, Integer> seats, Politician[] arrangement, int index) {   
         if (index == arrangement.length) return isValid(arrangement) ? 1 : 0;
 
         int arrangements = 0;
    	
 		for (Politician politician : seats.keySet()) {
 			if (seats.get(politician) < 1) continue;
+			if (index > 0 && politician == Politician.LEFT && arrangement[index - 1] == Politician.RIGHT) continue;
+			if (index > 0 && politician == Politician.RIGHT && arrangement[index - 1] == Politician.LEFT) continue;
+			
             arrangement[index] = politician;
             seats.put(politician, seats.get(politician) - 1);
             arrangements += getArrangements(seats, arrangement, index + 1);
