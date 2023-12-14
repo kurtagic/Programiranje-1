@@ -1,10 +1,8 @@
 #ignore directories
 predavanja
-.idea/
 
 # ignore all subdirectories and its contents
 **/results
 
 # ignore file extensions
 *.class
-*.iml
