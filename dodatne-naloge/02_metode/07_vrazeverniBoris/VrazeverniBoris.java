@@ -12,15 +12,18 @@ public class VrazeverniBoris {
 
 		for(int i = 1; i <= n; i++) {
 			String D = String.format("%4d", i);
-	
-			boolean jeNedelja = i % 7 == 0;
-			String T = jeNedelja ? "N" : "D";
-			int lihoMetov = jeNedelja ? 5 : 3;
+			char T = 'D';
+			int lihoMetov = 3;
+			
+			if(i % 7 == 0) {
+				T = 'N';
+				lihoMetov = 5;
+			}
 
 			String M = generateDiceRolls(rand, lihoMetov);
 			int S = M.length()/2;
 
-			System.out.printf("%s (%s): %s[%d]%n", D, T, M, S);
+			System.out.printf("%s (%c): %s[%d]%n", D, T, M, S);
 		}
 	}
 
