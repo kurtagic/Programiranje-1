@@ -50,6 +50,7 @@ public class Pismo {
 		enotaCene = c;
 		priporocnina = p;
 	}
+	
 	public boolean jeDrazjeOd(Pismo pismo) {
 		return this.cena() > pismo.cena();
 	}
