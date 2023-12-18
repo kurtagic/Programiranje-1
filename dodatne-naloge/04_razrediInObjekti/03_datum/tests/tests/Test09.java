@@ -15,11 +15,11 @@ public class Test09 {
         System.out.println( d1.cez(1).toString() );
         System.out.println( d1.cez(365).toString() );
         System.out.println( d1.cez(366).toString() );
-        System.out.println( d1.cez(-365).toString() );
+		System.out.println( d1.cez(-365).toString() );
         System.out.println( d1.cez(-761).toString() );
         System.out.println( d2.cez(1000).toString() );
         System.out.println( d2.cez(-1000).toString() );
         System.out.println( d3.cez(5000).toString() );
-        System.out.println( d3.cez(-5000).toString() );
+		System.out.println( d3.cez(-5000).toString() );
     }
 }

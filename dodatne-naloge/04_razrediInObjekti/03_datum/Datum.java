@@ -60,54 +60,60 @@ public class Datum {
 	}
 	
 	public Datum naslednik() {
-		if(this.toString().equals("31.12.2999")) return null;
-		
-		int naslednikDan = this.dan + 1;
-		int naslednikMesec = this.mesec;
-		int naslednikLeto = this.leto;
-		if(isLastDay(this)) {
-			naslednikDan = 1; 
-			naslednikMesec++;
-		}
-		if(isLastMonth(this)) {
-			naslednikMesec = 1;
-			naslednikLeto++;
+        return this.toString().equals("31.12.2999") ? null : this.cez(1);
+    }
+
+    public Datum predhodnik() {
+        return this.toString().equals("01.01.1583") ? null : this.cez(-1);
+    }
+	
+	public Datum cez(int delta) {
+		int day = this.dan + delta;
+		int month = this.mesec;
+		int year = this.leto;
+
+		while (!isValidDay(month, year, day)) {
+			if (delta > 0) {
+				day -= daysInMonth(month, year);
+				month = (month == END_MONTH) ? START_MONTH : month + 1;
+				year = (month == START_MONTH) ? year + 1 : year;
+			} else if (delta < 0) {
+				month = (month == START_MONTH) ? END_MONTH : month - 1;
+				year = (month == END_MONTH) ? year - 1 : year;
+				day += daysInMonth(month, year);
+			}
 		}	
-		
-		return ustvari(naslednikDan, naslednikMesec, naslednikLeto);
+
+		return isValidDay(month, year, day) ? ustvari(day, month, year) : null;
+	}
+
+	private boolean isValidDay(int month, int year, int day) {
+		return day >= START_DAY && day <= daysInMonth(month, year);
 	}
 	
-	private boolean isLastDay(Datum datum) {
-		return datum.dan == daysInMonth(datum.mesec, datum.leto);
+	public int razlika(Datum datum) {
+		return this.calculateDays() - datum.calculateDays();
+	}
+
+	private int calculateDays() {		
+		return this.dan + daysInMonths(this.mesec, this.leto) + daysInYears(this.leto);
 	}
 	
-	private boolean isLastMonth(Datum datum) {
-		return datum.mesec == END_MONTH;
-	}
-	
-	public Datum predhodnik() {
-		if(this.toString().equals("01.01.1583")) return null;
-		
-		int naslednikDan = this.dan - 1;
-		int naslednikMesec = this.mesec;
-		int naslednikLeto = this.leto;
-		if(naslednikDan == 0) {
-			naslednikMesec--;
+	private int daysInMonths(int months, int year) {
+		int days = 0;
+		for (int month = START_MONTH; month < months; month++) {
+			days += daysInMonth(month, year);
 		}
 		
-		if(naslednikMesec == 0) {
-			naslednikMesec = 12;
-			naslednikLeto--;
-			naslednikDan = daysInMonth(naslednikMesec, naslednikLeto); 
-		}	
-		return ustvari(naslednikDan, naslednikMesec, naslednikLeto);
+		return days;
 	}
-	
-	public Datum cez(int stDni) {
-		return null;
-	}
-	
-	public int razlika (Datum datum) {
-			return 0;
+
+	private int daysInYears(int years) {
+		int days = 0;
+		for (int year = START_YEAR; year < years; year++) {
+			days += daysInMonths(END_MONTH + 1, year);
+		}
+		
+		return days;
 	}
 }
