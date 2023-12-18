@@ -5,13 +5,10 @@ public class Stevke {
 		Scanner scanner = new Scanner(System.in);
 		long stevka = scanner.nextLong();
 		
+		int i = 10;
 		while(stevka > 0) {
-			int i = 10;
 			System.out.println(stevka % i);
 			stevka /= i;
-			
-			i*= 10;
 		}
-
 	}
 }
