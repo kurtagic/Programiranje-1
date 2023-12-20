@@ -71,7 +71,7 @@ public abstract class Zaporedje {
     }
 
     public Zaporedje inverz(Interval interval) {
-		return jeMonotono ? new Inverz(this, interval) : null;
+		return this.jeMonotono(interval) ? new Inverz(this, interval) : null;
     }
 	
 }
