@@ -30,8 +30,8 @@ public abstract class Zaporedje {
 		int min = Integer.MAX_VALUE;
 		int max = Integer.MIN_VALUE;	
 
-		for(int i = a; i <=b; i++) {
-			Integer fx = y(i);
+		for(int i = a; i <= b; i++) {
+			Integer fx = this.y(i);
 			
 			if(fx == null) continue;
 			if(fx < min) min = fx;
@@ -47,17 +47,17 @@ public abstract class Zaporedje {
 		
 		boolean narascajoce = true;
 		boolean padajoce = true;
-		
 		Integer prejsnafx = null;
 		
-		for(int i = a; i <=b; i ++) {
-			Integer fx = y(i);
+		for(int i = a; i <= b; i ++) {
+			Integer fx = this.y(i);
+			
 			if(fx == null) continue;
 			if(prejsnafx == null) {
 				prejsnafx = fx; 
 				continue;
 			}
-				
+			
 			if(prejsnafx <= fx) padajoce = false;
 			if(prejsnafx >= fx) narascajoce = false;
 			prejsnafx = fx;	
@@ -71,8 +71,7 @@ public abstract class Zaporedje {
     }
 
     public Zaporedje inverz(Interval interval) {
-        if(!this.jeMonotono(interval)) return null;
-		return new Inverz(this, interval);
+		return jeMonotono ? new Inverz(this, interval) : null;
     }
 	
 }

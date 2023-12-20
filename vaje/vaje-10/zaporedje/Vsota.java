@@ -1,18 +1,15 @@
 public class Vsota extends Zaporedje {
-	private Zaporedje funkcija1;
-	private Zaporedje funkcija2;
+	private Zaporedje prvo;
+	private Zaporedje drugo;
 	
-	public Vsota(Zaporedje f, Zaporedje g) {
-        this.funkcija1 = f;
-        this.funkcija2 = g;
+	public Vsota(Zaporedje prvo, Zaporedje drugo) {
+        this.prvo = prvo;
+        this.drugo = drugo;
     }
 	
 	@Override
-    public Integer y(int x) {
-        Integer fx = funkcija1.y(x);
-        Integer gx = funkcija2.y(x);
-		
-		if(fx == null || gx == null) return null;
-        return fx + gx;
-    }
+	public Integer y(int x) {
+		if (prvo.y(x) == null || drugo.y(x) == null) return null;
+		return prvo.y(x) + drugo.y(x);
+	}
 }
