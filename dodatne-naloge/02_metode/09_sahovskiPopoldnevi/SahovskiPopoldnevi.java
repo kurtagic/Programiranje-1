@@ -25,7 +25,7 @@ public class SahovskiPopoldnevi {
 		int winsA = 0;
 		int winsB = 0;
 		
-		for(int i = 0; (i < p ) && (winsA != z && winsB != z); i++) {			
+		for(int i = 0; (i < p) && (winsA != z && winsB != z); i++) {			
 			String result = getRoundResult(random, a, b);
 			
 			if(result == "A") winsA++;
