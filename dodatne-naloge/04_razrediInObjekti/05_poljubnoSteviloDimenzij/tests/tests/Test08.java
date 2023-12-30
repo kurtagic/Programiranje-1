@@ -17,7 +17,11 @@ public class Test08 {
         for (int i = 0;  i < a;  i++) {
             for (int j = 0;  j < b;  j++) {
                 for (int k = 0;  k < c;  k++) {
-                    p.nastavi(new int[]{i, j, k}, random.nextInt(199) - 99);
+					int value = random.nextInt(199) - 99;
+					System.out.printf("(%d, %d): %d\n", i, j, value);
+                    p.nastavi(new int[]{i, j, k}, value);
+					
+					// p.nastavi(new int[]{i, j, k}, random.nextInt(199) - 99);
                 }
             }
         }

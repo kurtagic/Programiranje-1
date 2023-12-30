@@ -41,52 +41,52 @@ public class Ptabela {
 	}
 	
 	public Ptabela podtabela(int[] indexes) {
-		int startIndex = getLinearIndex(Arrays.copyOf(indexes, this.dimensions.length));
-		int endIndex = getLinearIndex(getEndIndexArray(indexes));
-		int[] subDimensions = Arrays.copyOfRange(this.dimensions, indexes.length, this.dimensions.length);
+		int[] startArray = new int[this.dimensions.length];
+		int subLength = this.dimensions.length - indexes.length;
+		int[] subDimensions = new int[subLength];
 		
+		System.arraycopy(indexes, 0, startArray, 0, indexes.length);
+		System.arraycopy(this.dimensions, indexes.length, subDimensions, 0, subLength);
+		
+		int startIndex = getLinearIndex(startArray);		
 		Ptabela subArray = new Ptabela(subDimensions);
 		
 		System.arraycopy(pArray, startIndex, subArray.pArray, 0, subArray.pArray.length);
 		
-		// System.out.println(startIndex);	
-		// System.out.println(endIndex);
-		// System.out.println(Arrays.toString(subDimensions));
-		
 		return subArray;
     }
 	
-	private int[] getEndIndexArray(int[] indexes) {
-		int[] end = Arrays.copyOf(indexes, this.dimensions.length);
-		for(int i = 0; i < this.dimensions.length; i++) {
-			if(i < indexes.length) continue;
-			end[i] = dimensions[i] - 1;
-		}
-		
-		return end;
-	}
-	
 	@Override
 	public String toString() {
-		return arrayToString(pArray, dimensions);
+		if (this.dimensions.length == 1) return Arrays.toString(pArray);
+		return arrayToString(pArray, this.dimensions, 0, this.dimensions[1]);
 	}
 
-	private String arrayToString(int[] array, int[] dimensions) {
+	private String arrayToString(int[] array, int[] dimensions, int startIndex, int length) {
 		if (dimensions.length == 1) return Arrays.toString(array);
+		int subsCount = dimensions[0];
+		int subsLength = dimensions[1];
 		
 		StringBuilder str = new StringBuilder("[");
-		int subArraySize = dimensions[0];
-		int startIndex = 0;
-		int endIndex = subArraySize - 1;
 		
-		for (int i = 0; i < subArraySize; i++) {
-			int[] subArray = Arrays.copyOfRange(array, startIndex, endIndex);
-			int[] subDimensions = Arrays.copyOfRange(dimensions, 1, dimensions.length);
-			str.append(arrayToString(subArray, subDimensions));
-			if (i + 1 < subArraySize) str.append(", ");
+		for (int i = 0; i < subsCount; i++) {
+			int[] subArray = new int[length];
+			int[] subDimensions = new int[dimensions.length - 1];
 			
-			startIndex += subArraySize;
-			endIndex += subArraySize;
+			System.arraycopy(dimensions, 1, subDimensions, 0, dimensions.length - 1);
+			System.arraycopy(array, startIndex, subArray, 0, length);
+			
+			// System.out.printf("SUBARRAY: %s\n", Arrays.toString(subArray));
+			// System.out.printf("DIMENSIONS: %s\n", Arrays.toString(subDimensions));
+			// System.out.printf("START INDEX: %s\n", startIndex);
+			// System.out.printf("LENGTH: %s\n", subsLength);
+			// System.out.printf("DIMENSIONS LENGTH: %s\n", dimensions.length);
+			// System.out.println("-----------------");
+			
+			str.append(arrayToString(subArray, subDimensions, startIndex, subsLength));
+			if (i < subsCount - 1) str.append(", ");
+			
+			startIndex += 10;
 		}
 		
 		str.append("]");
