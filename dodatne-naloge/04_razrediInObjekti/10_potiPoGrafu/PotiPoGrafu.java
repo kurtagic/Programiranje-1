@@ -41,11 +41,15 @@ public class PotiPoGrafu {
 		}
 	}
 	
-	private static StringBuilder formatPath(List<Node> path) {
-		StringJoiner joiner = new StringJoiner(" ");
-		path.forEach(node -> joiner.add(String.valueOf(node.getIndex())));
+	private static String formatPath(List<Node> path) {
+		StringBuilder str = new StringBuilder();
+	
+		for(Node node : path) {
+			str.append(node.getIndex());
+			if (node != path.get(path.size() - 1)) str.append(" ");
+		}
 		
-		return new StringBuilder(joiner.toString());
+		return str.toString();
 	}
 }
 
