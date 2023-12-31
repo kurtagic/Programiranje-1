@@ -9,7 +9,7 @@ public class Test08 {
 
         System.out.println("Inicializacija:");
         Ptabela p = new Ptabela(new int[]{a, b, c});
-     //   System.out.println(p.toString());
+        System.out.println(p.toString());
         System.out.println("----------");
 
         System.out.println("Polnjenje z elementi od -99 do 99:");
@@ -17,11 +17,7 @@ public class Test08 {
         for (int i = 0;  i < a;  i++) {
             for (int j = 0;  j < b;  j++) {
                 for (int k = 0;  k < c;  k++) {
-					int value = random.nextInt(199) - 99;
-					System.out.printf("(%d, %d, %d): %d\n", i, j, k, value);
-                    p.nastavi(new int[]{i, j, k}, value);
-					
-					// p.nastavi(new int[]{i, j, k}, random.nextInt(199) - 99);
+                    p.nastavi(new int[]{i, j, k}, random.nextInt(199) - 99);
                 }
             }
         }

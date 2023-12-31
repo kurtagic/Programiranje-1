@@ -64,15 +64,26 @@ public class Ptabela {
 	private String arrayToString(int[] array, int[] dimensions) {
 		if(dimensions.length == 1) return Arrays.toString(array);
 		
-		int dimensionalShift = dimensions.length - 1;
-		int[] subDimensions = new int[dimensionalShift];		
-		System.arraycopy(dimensions, 1, subDimensions, 0, dimensionalShift);
+		String subArrays = "";
+		int subArraysCount = dimensions[0];
+		int subArraysSize = dimensions[1];
+		int subDimensionsSize = dimensions.length;
 		
 		int startIndex = 0;
-		int subSize = getSize(subDimensions);
-		int[] subArray = new int[subSize];
-		System.arraycopy(array, startIndex, subArray, 0, subSize);
+		int endIndex = subArraysSize;
+
+		for(int i = 0; i < subArraysCount; i++) {			
+			int[] subArray = Arrays.copyOfRange(array, startIndex, endIndex);
+			int[] subDimensions = Arrays.copyOfRange(dimensions, 1, subDimensionsSize);
+			
+			subArrays += arrayToString(subArray, subDimensions);
+			
+			if(i + 1 < subArraysCount) subArrays += ", ";
+
+			startIndex += subArraysSize;
+			endIndex += subArraysSize;
+		}
 		
-		return "[" + arrayToString(subArray, subDimensions) + "]";
+		return "[" + subArrays + "]";
 	}
 }
