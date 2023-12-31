@@ -23,9 +23,9 @@ public class Ptabela {
 	}
 	
 	private int getSize(int[] dimensions) {
-		for(int dimension : dimensions) {
-			dimension--;
-		}
+		// for(int dimension : dimensions) {
+			// dimension--;
+		// }
 		
 		return getLinearIndex(dimensions);
 	}
@@ -58,39 +58,21 @@ public class Ptabela {
 	
 	@Override
 	public String toString() {
-		if (this.dimensions.length == 1) return Arrays.toString(pArray);
-		return arrayToString(pArray, this.dimensions, 0, this.dimensions[1]);
+		return arrayToString(pArray, this.dimensions);
 	}
 
-	private String arrayToString(int[] array, int[] dimensions, int startIndex, int length) {
-		if (dimensions.length == 1) return Arrays.toString(array);
-		int subsCount = dimensions[0];
-		int subsLength = dimensions[1];
+	private String arrayToString(int[] array, int[] dimensions) {
+		if(dimensions.length == 1) return Arrays.toString(array);
 		
-		StringBuilder str = new StringBuilder("[");
+		int dimensionalShift = dimensions.length - 1;
+		int[] subDimensions = new int[dimensionalShift];		
+		System.arraycopy(dimensions, 1, subDimensions, 0, dimensionalShift);
 		
-		for (int i = 0; i < subsCount; i++) {
-			int[] subArray = new int[length];
-			int[] subDimensions = new int[dimensions.length - 1];
-			
-			System.arraycopy(dimensions, 1, subDimensions, 0, dimensions.length - 1);
-			System.arraycopy(array, startIndex, subArray, 0, length);
-			
-			// System.out.printf("SUBARRAY: %s\n", Arrays.toString(subArray));
-			// System.out.printf("DIMENSIONS: %s\n", Arrays.toString(subDimensions));
-			// System.out.printf("START INDEX: %s\n", startIndex);
-			// System.out.printf("LENGTH: %s\n", subsLength);
-			// System.out.printf("DIMENSIONS LENGTH: %s\n", dimensions.length);
-			// System.out.println("-----------------");
-			
-			str.append(arrayToString(subArray, subDimensions, startIndex, subsLength));
-			if (i < subsCount - 1) str.append(", ");
-			
-			startIndex += 10;
-		}
+		int startIndex = 0;
+		int subSize = getSize(subDimensions);
+		int[] subArray = new int[subSize];
+		System.arraycopy(array, startIndex, subArray, 0, subSize);
 		
-		str.append("]");
-
-		return str.toString();
+		return "[" + arrayToString(subArray, subDimensions) + "]";
 	}
 }
