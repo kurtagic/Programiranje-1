@@ -1,5 +1,6 @@
 #ignore directories
 predavanja
+tekmovanje
 # ignore all subdirectories and its contents
 **/results
 
