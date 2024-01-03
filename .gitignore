@@ -1,10 +1,12 @@
-#ignore directories
+#ignore directory
 predavanja
 tekmovanje
-# ignore all subdirectories and its contents
+izpiti
+
+# ignore subdirectory and its content
 **/results
 
-# ignore file extensions
+# ignore file extension
 *.class
 *.res
 *.htm
