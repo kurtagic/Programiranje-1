@@ -29,14 +29,28 @@ public class Skupno {
         }
     }
 	
+	public static <T> T max(Vektor<? extends T> vektor, Comparator<? super T> primerjalnik) {
+		int stElementov = vektor.steviloElementov();
+		if(stElementov == 0) return null;
+		
+		T maxElement = vektor.vrni(0);
+		for(int i = 0; i < stElementov; i++) {
+			T element = vektor.vrni(i);
+			if(primerjalnik.compare(element, maxElement) > 0) maxElement = element;
+		}
+	
+		return maxElement;
+	}
+	
 	public static <T> Comparator<T> kompozitum(Comparator<T> prim1, Comparator<T> prim2) {
+		// return prim1.thenComparing(prim2);
 		Comparator<T> comparator = new Comparator<T>() {
 			
 			@Override
             public int compare(T obj1, T obj2) {
-                int res1 = prim1.compare(obj1, obj2);
-                if (res1 != 0) return res1;
-                return prim2.compare(obj1, obj2);
+                int res = prim1.compare(obj1, obj2);
+   
+                return (res != 0) ? res : prim2.compare(obj1, obj2);
             }
         };
 		

@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public abstract class Lik implements Comparable<Lik>{
+public abstract class Lik implements Comparable<Lik> {
 
 	public abstract int tipKonstanta();
     
@@ -27,28 +27,26 @@ public abstract class Lik implements Comparable<Lik>{
 	}
 		
 	public static void urediPoTipuInObsegu(Vektor<Lik> vektor) {
-		int n = vektor.steviloElementov();
-		
-		for (int i = 0; i < n - 1; i++) {
-			for (int j = 0; j < n - i - 1; j++) {
-				Lik lik1 = vektor.vrni(j);
-				Lik lik2 = vektor.vrni(j + 1);
-
-				int tipComparison = poTipu().compare(lik1, lik2);
-
-				if (tipComparison > 0) {
-					vektor.zamenjaj(j, j + 1);
-					continue;
-				} 
-				
-				if (tipComparison == 0) {
-					int obsegComparison = poObsegu().compare(lik1, lik2);
-					if (obsegComparison > 0) vektor.zamenjaj(j, j + 1);
-				}
-            }
-        }
+		Skupno.uredi(vektor, Skupno.kompozitum(Lik.poTipu(), Lik.poObsegu()));
 	}
 	
+	public static Lik vrniKrogZMinimalnimObsegom(Vektor<Lik> vektor) {
+		Krog minKrog = null;
+		for(int i = 0; i < vektor.steviloElementov(); i++) {
+			Lik lik = vektor.vrni(i);
+			if(lik == null) continue;
+			if(!(lik instanceof Krog)) continue;
+			
+			Krog krog = (Krog) lik;
+			if(minKrog == null) minKrog = krog;
+			
+			// minKrog = Math.min(minKrog.obseg(), krog.obseg());
+			if(Lik.poObsegu().compare(krog, minKrog) < 0) minKrog = krog;
+		}
+		
+		return minKrog;
+	}
+	 
     // Vrne vrsto lika <this> (npr. "pravokotnik").
     public abstract String vrsta();
 

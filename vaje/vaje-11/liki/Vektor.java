@@ -14,13 +14,6 @@ public class Vektor<T> {
         this.elementi = (T[]) new Object[ZACETNA_KAPACITETA];
         this.stElementov = 0;  // odveč, a poveča jasnost
     }
-	
-	
-	public <U extends T> void zamenjaj(int i, int j) {
-		U temp = (U) vrni(i);
-		nastavi(i, (U) vrni(j));
-		nastavi(j, temp);
-	}
 
     // Vrne število elementov vektorja this.
     public int steviloElementov() {
