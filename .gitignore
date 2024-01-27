@@ -1,0 +1,19 @@
+#ignore directory
+
+# ignore subdirectory and its content
+**/skritiTesti
+**/results
+
+
+# ignore file extension
+*.class
+*.res
+*.htm
+
+# ignore files globally
+tj.exe
+settings.json
+
+# include the file in a specific directory
+!tj/tj.exe
+!tj/settings.json
