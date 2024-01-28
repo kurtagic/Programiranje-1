@@ -53,7 +53,6 @@ public class PravilniTrikotnik {
 		return combinations;
 	}
 	
-	
 	private static boolean isRightTriangle(int[][] points, int[] triangle, int d) {
 		
 		double[] sides = new double[3];
