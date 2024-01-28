@@ -1,4 +1,3 @@
-
 /*
  * Samodejno testiranje:
  * tj.exe
@@ -37,39 +36,62 @@ public class Tretja {
         // po potrebi dopolnite ...
     }
 
-    public static class Tiskalnik {
+    public static class Tiskalnik 
+	{
 
-        // atributi (po potrebi) ...
+		private Map<Pedagog, List<String>> vrsta;
+		
+        private Profesor profesor;
+        private Docent docent;
+        private Asistent asistent;
+		
+		public Tiskalnik()
+		{	
+			this.vrsta = new HashMap<>();
+			
+			this.profesor = new Profesor();
+			this.docent = new Docent();
+			this.asistent = new Asistent();
+		
+			this.vrsta.put(profesor, new LinkedList<>());
+			this.vrsta.put(docent, new LinkedList<>());
+			this.vrsta.put(asistent, new LinkedList<>());
+		}
 
-        public Tiskalnik() {
-            // dopolnite ...
+		public void prejmi(Pedagog pedagog, String dokument) 
+		{
+            if (pedagog instanceof Profesor) vrsta.get(profesor).add(dokument);
+			if (pedagog instanceof Docent) vrsta.get(docent).add(dokument);
+			if (pedagog instanceof Asistent) vrsta.get(asistent).add(dokument);
         }
 
-        public void prejmi(Pedagog pedagog, String dokument) {
-            // dopolnite ...
+        public int dolzinaVrste() 
+		{
+			int sum = 0;
+			for(Pedagog pedagog : vrsta.keySet())
+			{
+				sum += steviloDokumentov(pedagog);
+			}
+			
+           return sum;
         }
 
-        public int dolzinaVrste() {
-            // popravite / dopolnite ...
-            return -1;
+        public int steviloDokumentov(Pedagog pedagog) 
+		{
+            if (pedagog instanceof Profesor) return vrsta.get(profesor).size();
+			if (pedagog instanceof Docent) return vrsta.get(docent).size();
+			if (pedagog instanceof Asistent) return vrsta.get(asistent).size();
+			
+			return -1; 
         }
 
-        public int steviloDokumentov(Pedagog pedagog) {
-            // popravite / dopolnite ...
-            return -1;
+        public String natisni() 
+		{
+           if(steviloDokumentov(profesor) > 0) return vrsta.get(profesor).remove(0);
+		   if(steviloDokumentov(docent) > 0) return vrsta.get(docent).remove(0);
+		   if(steviloDokumentov(asistent) > 0) return vrsta.get(asistent).remove(0);
+		   
+		   return null;
         }
-
-        public String natisni() {
-            // popravite / dopolnite ...
-            return "";
-        }
-
-        // pomo"zne metode (po potrebi) ...
-    }
-
-    // pomo"zne metode, notranji razredi (po potrebi) ...
-
-    public static void main(String[] args) {
-        // koda za ro"cno testiranje (po potrebi) ...
     }
 }
