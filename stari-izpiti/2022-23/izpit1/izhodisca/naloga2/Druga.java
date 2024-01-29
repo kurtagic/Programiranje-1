@@ -13,11 +13,11 @@ public class Druga
 		{
 			char[] beseda = besede[i];
 			
-			Integer[][] tocke = zgenerirajTocke(polozaji[i], beseda.length);
+			List<Integer[]> tocke = zgenerirajTocke(polozaji[i], beseda.length);
 			
-			for(int k = 0; k < tocke.length; k++)
+			for(int k = 0; k < tocke.size(); k++)
 			{
-				List<Integer> tocka = Arrays.asList(tocke[k]);
+				List<Integer> tocka = Arrays.asList(tocke.get(k));
 				char crka = beseda[k];
 				
 				if(!tockeCrke.containsKey(tocka))
@@ -33,17 +33,17 @@ public class Druga
 		return true;
     }
 	
-	private static Integer[][] zgenerirajTocke(char[] polozaj, int dolzina)
+	private static List<Integer[]> zgenerirajTocke(char[] polozaj, int dolzina)
 	{
 		int startX = polozaj[1] - '0';
 		int startY = polozaj[0] - '0';
 		char smer = polozaj[2];
 		
-		Integer[][] tocke = new Integer[dolzina][2];
+		List<Integer[]> tocke = new ArrayList<>();
 		
 		for(int i = 0; i < dolzina; i++)
 		{
-			tocke[i] = (smer == VODORAVNO) ? new Integer[]{startX++, startY} : new Integer[]{startX, startY++};
+			tocke.add((smer == VODORAVNO) ? new Integer[]{startX++, startY} : new Integer[]{startX, startY++});
 		}
 
 		return tocke;

@@ -4,15 +4,31 @@ import java.util.*;
 public class Tretja {
 
     public static abstract class Zival {
-        // po potrebi dopolnite ...
+		
+		private String zvok;
+		public Zival(String zvok) 
+		{
+			this.zvok = zvok;
+		}
+
+		public String oglasiSe()
+		{
+			return zvok;
+		}
     }
 
     public static class Pes extends Zival {
-        // po potrebi dopolnite ...
+		public Pes() 
+		{
+			super("hov");
+		}
     }
 
     public static class Macka extends Zival {
-        // po potrebi dopolnite ...
+        public Macka()
+		{
+			super("mijav");
+		}
     }
 
     public static class RodovniskiPes extends Pes {
@@ -25,17 +41,31 @@ public class Tretja {
             this.oce = oce;
             this.mati = mati;
         }
+		
+		public String getPasma()
+		{
+			return this.pasma;
+		}
 
-        public boolean preveri() {
-            // popravite / dopolnite ...
+        public boolean preveri() 
+		{
+            if(this.oce == null || this.mati == null) return true;
+			if(!this.oce.getPasma().equals(this.getPasma())) return false;
+			if(!this.mati.getPasma().equals(this.getPasma())) return false;
+			
+			if(this.oce.preveri() && this.mati.preveri()) return true;
+			
             return false;
         }
-
-        // po potrebi dopolnite ...
     }
 
-    public static int prestej(RodovniskiPes[] psi, String pasma) {
-        // popravite / dopolnite ...
-        return -1;
+    public static int prestej(RodovniskiPes[] psi, String pasma) 
+	{
+		int counter = 0;
+        for(RodovniskiPes pes : psi)
+		{
+			if(pes.getPasma().equals(pasma)) counter++;
+		}
+        return counter;
     }
 }

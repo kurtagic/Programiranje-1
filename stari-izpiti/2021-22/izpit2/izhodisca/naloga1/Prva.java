@@ -18,8 +18,7 @@ public class Prva
 			if(branjevkaZaloga - nakup < 0)
 			{
 				branjevka++;
-				branjevkaZaloga = s;
-				
+				branjevkaZaloga = s;		
 			}
 			
 			branjevkaZaloga -= nakup;
