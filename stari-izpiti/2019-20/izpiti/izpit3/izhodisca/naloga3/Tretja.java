@@ -1,10 +1,3 @@
-
-/*
- * Testiranje:
- *
- * tj.exe
- */
-
 public class Tretja {
 
     public static abstract class Drevo {
@@ -15,6 +8,16 @@ public class Tretja {
             this.x = x;
             this.y = y;
         }
+		
+		public int getX()
+		{
+			return this.x;
+		}
+		
+		public int getY()
+		{
+			return this.y;
+		}
 
         public abstract String vrsta();
 
@@ -23,9 +26,10 @@ public class Tretja {
             return String.format("%s(%d, %d)", this.vrsta(), this.x, this.y);
         }
 
-        public int d2(Drevo drevo) {
-            // popravite / dopolnite ...
-            return -9999;
+        public int d2(Drevo drevo) 
+		{
+			if(this.equals(drevo)) return 0;
+			return (int) ( Math.pow(this.getX() - drevo.getX(), 2) + Math.pow(this.getY() - drevo.getY(), 2) );
         }
 
         // po potrebi dopolnite ...
@@ -130,21 +134,29 @@ public class Tretja {
             this.drevesa = drevesa;
         }
 
-        public boolean jeListnat() {
-            // popravite / dopolnite ...
-            return false;
+        public boolean jeListnat() 
+		{
+           for(Drevo drevo : drevesa)
+		   {
+			   if(!(drevo instanceof Listavec)) return false;
+		   }
+	   
+			return true;
         }
 
-        public Drevo najblizjeIstovrstno(Drevo drevo) {
-            // popravite / dopolnite ...
-            return null;
+        public Drevo najblizjeIstovrstno(Drevo drevo) 
+		{
+			Drevo najblizje = null;
+			for(Drevo d : drevesa)
+			{
+				if(drevo.equals(d)) continue;
+				if(!drevo.vrsta().equals(d.vrsta())) continue;
+			   
+				if(najblizje == null) najblizje = d;
+				if(drevo.d2(d) < drevo.d2(najblizje)) najblizje = d;
+			}
+	   
+			return najblizje;
         }
-
-        // po potrebi dopolnite ...
     }
-
-    public static void main(String[] args) {
-        // koda za ro"cno testiranje (po "zelji)
-    }
-
 }

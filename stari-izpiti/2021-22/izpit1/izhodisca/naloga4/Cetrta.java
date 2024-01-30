@@ -18,22 +18,18 @@ public class Cetrta {
 	{
 		return new Iterator<Integer>() 
 		{
-            int vrni = zacetek;
+            int n = zacetek;
             Collection<Integer> zbirka = new HashSet<>();
 
             @Override
             public Integer next() 
 			{
                 zbirka.add(it.next());
-                if (!zbirka.contains(vrni)) 
-				{
-                    return vrni++;
-                }
-				
-                vrni++;
+                if (!zbirka.contains(n)) return n++;
+                
+                n++;
                 return next();
             }
-			
 			
             @Override
             public boolean hasNext() 
