@@ -24,7 +24,7 @@ public class Cetrta {
 			if(!ponudniki.contains(ponudnik)) ponudniki.add(ponudnik);
         }
 		
-        if (u == 1) poAbecedi(ponudniki);
+        if(u == 1) poAbecedi(ponudniki);
 		if(u == 2) poArtiklu(ponudnik_artikel_cena, a);
     }
 
@@ -34,18 +34,22 @@ public class Cetrta {
         sorted.forEach(System.out::println);
 	}
 	
-	    private static void poArtiklu(List<String[]> ponudnik_artikel_cena, String artikel) {
-        List<String[]> ponudnik_cena = new ArrayList<>();
+	private static void poArtiklu(List<String[]> ponudnik_artikel_cena, String artikel) 
+	{
+		
+		List<String[]> ponudnik_cena = new ArrayList<>();
 
-        for (String[] entry : ponudnik_artikel_cena) {
-            if (entry[1].equals(artikel)) ponudnik_cena.add(new String[]{entry[0], entry[2]});
-            
-        }
+		for (String[] entry : ponudnik_artikel_cena) 
+		{
+			if (entry[1].equals(artikel)) ponudnik_cena.add(new String[]{entry[0], entry[2]});
+			
+		}
 
-        ponudnik_cena.sort(Comparator.comparingInt(entry -> Integer.parseInt(entry[1])));
+		ponudnik_cena.sort(Comparator.comparingInt(entry -> Integer.parseInt(entry[1])));
 
-        for (String[] ponudnik : ponudnik_cena) {
-            System.out.println(ponudnik[0]);
-        }
+		for (String[] ponudnik : ponudnik_cena) 
+		{
+			System.out.println(ponudnik[0]);
+		}
     }
 }
