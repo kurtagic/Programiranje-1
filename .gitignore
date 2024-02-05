@@ -1,11 +1,7 @@
 #ignore directory
-teorija
-wordle
 
 # ignore subdirectory and its content
-**/skritiTesti
 **/results
-
 
 # ignore file extension
 *.class
