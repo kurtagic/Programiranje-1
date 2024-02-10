@@ -1,7 +1,7 @@
-
 import java.util.*;
 
-public class Prva {
+public class Prva 
+{
 
     public static void main(String[] args) 
 	{
@@ -16,20 +16,24 @@ public class Prva {
 	{	
 		int stevilo = (int) Math.pow(10, dolzina - 1);
 		
-		while (true) 
+		while (digitsSum(stevilo) != vsota) 
 		{
-			int sum = 0;
-
-			for (char digit : Integer.toString(stevilo).toCharArray()) 
-			{
-				sum += digit - '0';
-			}
-
-			if (sum == vsota) break;
-			
 			stevilo++;
 		}
 		
 		return stevilo;
+	}
+	
+	private static int digitsSum(int n)
+	{
+		int sum = 0;
+
+        while (n > 0) 
+		{
+            sum += n % 10;
+            n /= 10;
+        }
+
+        return sum;
 	}
 }
